@@ -19,11 +19,14 @@ const tabs=[
     {url:"hewww.example.com"}
 ]
 
+
 tabBtn.addEventListener("click",function(){
-    myLeads.push(tabs[0].url)
-    localStorage.setItem("myLeads",JSON.stringify(myLeads))
-    render(myLeads)
-})
+     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){  
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads",JSON.stringify(myLeads))
+        render(myLeads)
+    })
+ })
 
 
 deleteBtn.addEventListener("dblclick",function(){
